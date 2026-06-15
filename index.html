@@ -24,7 +24,6 @@
       overflow: hidden;
     }
 
-    /* Header */
     .header {
       background: #0f1f5c;
       color: #fff;
@@ -38,11 +37,7 @@
       margin-bottom: 12px;
       flex-wrap: wrap;
     }
-    .logo {
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: -0.5px;
-    }
+    .logo { font-size: 22px; font-weight: 900; letter-spacing: -0.5px; }
     .logo span { color: #2979ff; }
     .doc-type {
       font-size: 11px;
@@ -54,20 +49,11 @@
       border-radius: 20px;
       white-space: nowrap;
     }
-    .header h1 {
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
-    .header-meta {
-      font-size: 12px;
-      color: rgba(255,255,255,0.55);
-    }
+    .header h1 { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
+    .header-meta { font-size: 12px; color: rgba(255,255,255,0.55); }
 
-    /* Body */
     .body { padding: 24px 28px; }
 
-    /* Sections */
     .section { margin-bottom: 28px; }
     .section:last-child { margin-bottom: 0; }
 
@@ -82,25 +68,15 @@
       margin-bottom: 14px;
     }
 
-    /* Field groups */
-    .fields {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    .fields.full { grid-template-columns: 1fr; }
-    .fields.three { grid-template-columns: 1fr 1fr 1fr; }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
-    @media (max-width: 480px) {
-      .fields, .fields.three { grid-template-columns: 1fr; }
-    }
-
-    .field { display: flex; flex-direction: column; gap: 3px; }
-    .field.span2 { grid-column: span 2; }
-
-    @media (max-width: 480px) {
+    @media (max-width: 500px) {
+      .fields { grid-template-columns: 1fr; }
       .field.span2 { grid-column: span 1; }
     }
+
+    .field { display: flex; flex-direction: column; gap: 4px; }
+    .field.span2 { grid-column: span 2; }
 
     .field label {
       font-size: 10px;
@@ -109,43 +85,51 @@
       letter-spacing: 0.8px;
       color: #666;
     }
-    .field-value {
-      border-bottom: 1.5px solid #d0d0d0;
-      min-height: 28px;
-      padding: 4px 2px;
-      font-size: 13px;
-      color: #1a1a2e;
-      line-height: 1.4;
-    }
-    .field-value.tall { min-height: 44px; }
 
-    /* Välitysliike box */
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="date"],
+    textarea {
+      width: 100%;
+      border: none;
+      border-bottom: 1.5px solid #ccc;
+      padding: 6px 2px;
+      font-size: 13px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #1a1a2e;
+      background: transparent;
+      outline: none;
+      border-radius: 0;
+      -webkit-appearance: none;
+      transition: border-color 0.15s;
+    }
+    input:focus, textarea:focus { border-bottom-color: #2979ff; }
+    input::placeholder, textarea::placeholder { color: #bbb; }
+    textarea { resize: vertical; min-height: 48px; line-height: 1.5; }
+
+    input[readonly] {
+      color: #444;
+      border-bottom-color: transparent;
+      cursor: default;
+    }
+
     .broker-box {
       background: #f0f4ff;
       border: 1.5px solid #c5d3ff;
       border-radius: 8px;
       padding: 14px 16px;
     }
-    .broker-box .broker-name {
-      font-size: 15px;
-      font-weight: 800;
-      color: #0f1f5c;
-      margin-bottom: 2px;
-    }
-    .broker-box .broker-sub {
-      font-size: 12px;
-      color: #555;
-    }
-    .broker-box .broker-contact {
+    .broker-name { font-size: 15px; font-weight: 800; color: #0f1f5c; margin-bottom: 2px; }
+    .broker-sub { font-size: 12px; color: #555; }
+    .broker-contact {
       margin-top: 10px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 6px;
+      gap: 8px;
     }
-    @media (max-width: 480px) {
-      .broker-box .broker-contact { grid-template-columns: 1fr; }
-    }
-    .broker-box .broker-contact-item label {
+    @media (max-width: 500px) { .broker-contact { grid-template-columns: 1fr; } }
+    .broker-item label {
       display: block;
       font-size: 10px;
       font-weight: 700;
@@ -154,110 +138,56 @@
       color: #888;
       margin-bottom: 1px;
     }
-    .broker-box .broker-contact-item span {
-      font-size: 13px;
-      color: #1a1a2e;
-    }
+    .broker-item span { font-size: 13px; color: #1a1a2e; }
 
-    /* Palveluluettelo */
-    .service-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
+    .service-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
     .service-list li {
-      display: flex;
-      gap: 8px;
-      align-items: flex-start;
-      font-size: 13px;
-      line-height: 1.5;
-      color: #333;
+      display: flex; gap: 8px; align-items: flex-start;
+      font-size: 13px; line-height: 1.5; color: #333;
     }
     .service-list li::before {
-      content: "✓";
-      color: #2979ff;
-      font-weight: 700;
-      flex-shrink: 0;
-      margin-top: 1px;
+      content: "✓"; color: #2979ff; font-weight: 700; flex-shrink: 0; margin-top: 1px;
     }
 
-    /* Palkkiotaulukko */
-    .fee-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
+    .fee-table { width: 100%; border-collapse: collapse; font-size: 13px; }
     .fee-table th {
-      background: #0f1f5c;
-      color: #fff;
-      text-align: left;
-      padding: 8px 12px;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      background: #0f1f5c; color: #fff; text-align: left;
+      padding: 8px 12px; font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.5px;
     }
-    .fee-table td {
-      padding: 9px 12px;
-      border-bottom: 1px solid #eee;
-      vertical-align: middle;
-    }
+    .fee-table td { padding: 9px 12px; border-bottom: 1px solid #eee; }
     .fee-table tr:last-child td { border-bottom: none; }
     .fee-table tr:nth-child(even) td { background: #f8f9ff; }
-    .fee-note {
-      margin-top: 8px;
-      font-size: 11.5px;
-      color: #555;
-      line-height: 1.5;
-    }
+    .fee-note { margin-top: 8px; font-size: 11.5px; color: #555; line-height: 1.5; }
 
-    /* Ehtojen teksti */
-    .clause-text {
-      font-size: 12.5px;
-      line-height: 1.7;
-      color: #333;
-    }
+    .clause-text { font-size: 12.5px; line-height: 1.7; color: #333; }
     .clause-text p + p { margin-top: 8px; }
 
-    /* Allekirjoitukset */
-    .sig-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-top: 8px;
-    }
-    @media (max-width: 480px) {
-      .sig-grid { grid-template-columns: 1fr; }
-    }
-    .sig-block { display: flex; flex-direction: column; gap: 8px; }
-    .sig-label {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: #666;
-    }
-    .sig-line {
-      border-bottom: 1.5px solid #1a1a2e;
-      min-height: 44px;
-      margin-top: 4px;
-    }
-    .sig-name-line {
-      border-bottom: 1px dashed #aaa;
-      min-height: 24px;
-    }
-    .sig-sublabel {
-      font-size: 10px;
-      color: #888;
-    }
+    .sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
+    @media (max-width: 500px) { .sig-grid { grid-template-columns: 1fr; } }
+    .sig-block { display: flex; flex-direction: column; gap: 6px; }
+    .sig-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #666; }
+    .sig-line { border-bottom: 1.5px solid #1a1a2e; min-height: 48px; }
 
-    .date-place {
-      margin-bottom: 20px;
+    .print-bar {
+      background: #f0f4ff;
+      border-top: 1px solid #dde4ff;
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
     }
-    .date-place .field-value { max-width: 320px; }
+    .print-bar p { font-size: 12px; color: #555; }
+    .btn-print {
+      background: #0f1f5c; color: #fff; border: none;
+      padding: 10px 22px; border-radius: 8px;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .btn-print:hover { background: #2979ff; }
 
-    /* Legal footer */
     .legal-footer {
       background: #f5f5f7;
       border-top: 1px solid #e8e8e8;
@@ -268,135 +198,117 @@
       text-align: center;
     }
 
-    /* Print styles */
     @media print {
-      body { background: #fff; padding: 0; font-size: 12px; }
+      body { background: #fff; padding: 0; }
       .page { box-shadow: none; border-radius: 0; }
-      .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .fee-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .print-bar { display: none; }
+      .header, .fee-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      input, textarea { border-bottom: 1px solid #999 !important; }
     }
   </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- HEADER -->
   <div class="header">
     <div class="header-top">
       <div class="logo">Best<span>Estates</span>.fi</div>
       <div class="doc-type">Toimeksiantosopimus</div>
     </div>
     <h1>Vuokraustoimeksiantosopimus</h1>
-    <div class="header-meta">minuntila.fi · Best Estates Oy · Y-tunnus 3219298-3</div>
+    <div class="header-meta">minuntila.fi &nbsp;·&nbsp; Best Estates Oy &nbsp;·&nbsp; Y-tunnus 3219298-3</div>
   </div>
 
   <div class="body">
 
-    <!-- TOIMEKSIANTAJA -->
     <div class="section">
       <div class="section-title">Toimeksiantaja</div>
       <div class="fields">
         <div class="field span2">
           <label>Nimi / Yrityksen nimi</label>
-          <div class="field-value"></div>
+          <input type="text" placeholder="Etunimi Sukunimi tai Yritys Oy" />
         </div>
         <div class="field">
           <label>Yhteyshenkilö</label>
-          <div class="field-value"></div>
+          <input type="text" placeholder="Etunimi Sukunimi" />
         </div>
         <div class="field">
           <label>Y-tunnus / Henkilötunnus</label>
-          <div class="field-value"></div>
+          <input type="text" placeholder="1234567-8" />
         </div>
         <div class="field span2">
           <label>Osoite</label>
-          <div class="field-value"></div>
+          <input type="text" placeholder="Katuosoite, postinumero, kaupunki" />
         </div>
         <div class="field">
           <label>Puhelin</label>
-          <div class="field-value"></div>
+          <input type="tel" placeholder="040 123 4567" />
         </div>
         <div class="field">
           <label>Sähköposti</label>
-          <div class="field-value"></div>
+          <input type="email" placeholder="nimi@yritys.fi" />
         </div>
       </div>
     </div>
 
-    <!-- VÄLITYSLIIKE -->
     <div class="section">
       <div class="section-title">Välitysliike</div>
       <div class="broker-box">
         <div class="broker-name">Best Estates Oy</div>
         <div class="broker-sub">Y-tunnus 3219298-3 &nbsp;·&nbsp; minuntila.fi</div>
         <div class="broker-contact">
-          <div class="broker-contact-item">
-            <label>Välittäjä</label>
-            <span>Lasse Sorvari</span>
-          </div>
-          <div class="broker-contact-item">
-            <label>Puhelin</label>
-            <span>040 568 5900</span>
-          </div>
-          <div class="broker-contact-item">
-            <label>Sähköposti</label>
-            <span>lasse@bestestates.fi</span>
-          </div>
-          <div class="broker-contact-item">
-            <label>Verkkosivut</label>
-            <span>minuntila.fi</span>
-          </div>
+          <div class="broker-item"><label>Välittäjä</label><span>Lasse Sorvari</span></div>
+          <div class="broker-item"><label>Puhelin</label><span>040 568 5900</span></div>
+          <div class="broker-item"><label>Sähköposti</label><span>lasse@bestestates.fi</span></div>
+          <div class="broker-item"><label>Verkkosivut</label><span>minuntila.fi</span></div>
         </div>
       </div>
     </div>
 
-    <!-- VUOKRAUKSEN KOHDE -->
     <div class="section">
       <div class="section-title">Vuokrauksen kohde</div>
       <div class="fields">
         <div class="field span2">
           <label>Osoite</label>
-          <div class="field-value"></div>
+          <input type="text" placeholder="Katuosoite, postinumero, kaupunki" />
         </div>
         <div class="field">
           <label>Huoneistoala (m²)</label>
-          <div class="field-value"></div>
+          <input type="text" placeholder="esim. 450 m²" />
         </div>
         <div class="field">
           <label>Tavoiteltu vuokra (€/kk)</label>
-          <div class="field-value"></div>
-        </div>
-        <div class="field">
-          <label>Vakuus</label>
-          <div class="field-value">3 kk:n vuokraa vastaava summa tai sopimuksen mukaan</div>
+          <input type="text" placeholder="esim. 3 500 €/kk" />
         </div>
         <div class="field">
           <label>Vapautuminen</label>
-          <div class="field-value"></div>
+          <input type="text" placeholder="esim. 1.9.2026 tai heti" />
+        </div>
+        <div class="field">
+          <label>Vakuus</label>
+          <input type="text" value="3 kk:n vuokraa vastaava summa" />
         </div>
         <div class="field span2">
           <label>Vuokraan sisältyy</label>
-          <div class="field-value tall"></div>
+          <textarea placeholder="esim. lämmitys, vesi — tai: pelkkä tilavuokra"></textarea>
         </div>
         <div class="field span2">
           <label>Erilliskorvaukset</label>
-          <div class="field-value"></div>
+          <textarea placeholder="esim. sähkö erikseen, jätehuolto erikseen" style="min-height:36px;"></textarea>
         </div>
         <div class="field span2">
           <label>Autopaikkamäärä ja -maksut</label>
-          <div class="field-value"></div>
+          <input type="text" placeholder="esim. 10 autopaikkaa, 50 €/paikka/kk" />
         </div>
       </div>
     </div>
 
-    <!-- TOIMEKSIANNON EHDOT -->
     <div class="section">
       <div class="section-title">Toimeksiannon ehdot</div>
       <div class="clause-text">
         <p>Toimeksiantaja antaa Best Estates Oy:lle tehtäväksi etsiä vuokralainen toimeksiannon tarkoittamiin tiloihin toimeksiantajan kanssa sovituilla ehdoilla. Mikäli toimeksianto johtaa vuokrasopimuksen solmimiseen Best Estates Oy:n osoittaman toimijan kanssa, toimeksiannosta suoritetaan välittäjälle palkkio.</p>
       </div>
-
-      <div style="margin-top: 14px; margin-bottom: 6px; font-size: 12px; font-weight: 700; color: #333;">Palveluun sisältyy:</div>
+      <div style="margin-top:14px; margin-bottom:8px; font-size:12px; font-weight:700; color:#333;">Palveluun sisältyy:</div>
       <ul class="service-list">
         <li>Oikean vuokratason määrittäminen yhdessä toimeksiantajan kanssa</li>
         <li>Kohteen markkinointi Best Estates Oy:n käyttämissä kanavissa</li>
@@ -405,14 +317,12 @@
         <li>Vuokrasopimuksen laatiminen</li>
         <li>Sopimuksenteon käytännön järjestelyistä huolehtiminen</li>
       </ul>
-
-      <div class="clause-text" style="margin-top: 14px;">
+      <div class="clause-text" style="margin-top:14px;">
         <p>Tämä sopimus on voimassa toistaiseksi. Sopimusosapuolet voivat irtisanoa sopimuksen kuukauden irtisanomisajalla ilmoittamalla siitä kirjallisesti. Jos toimeksiantaja on luonnollinen henkilö ja kohde ei kuulu toimeksiantajan elinkeinotoimintaan, sopimus on voimassa neljä kuukautta ja sopimus voidaan irtisanoa kuukauden irtisanomisajalla. Toimeksiantosopimusta on mahdollista jatkaa ilmoittamalla siitä välittäjälle ennen sopimuksen päättymistä.</p>
-        <p style="margin-top: 8px;">Jos toimeksianto johtaa vuokrasopimuksen tai kaupan syntymiseen Best Estates Oy:n toimeksiantosopimuksen voimassa olon aikana nimeämän tahon kanssa 6 kuukautta toimeksiantosopimuksen päättymisen jälkeen, on Best Estates Oy:llä oikeus välityspalkkioon edellä mainittujen ehtojen mukaisesti.</p>
+        <p>Jos toimeksianto johtaa vuokrasopimuksen tai kaupan syntymiseen Best Estates Oy:n toimeksiantosopimuksen voimassa olon aikana nimeämän tahon kanssa 6 kuukautta toimeksiantosopimuksen päättymisen jälkeen, on Best Estates Oy:llä oikeus välityspalkkioon edellä mainittujen ehtojen mukaisesti.</p>
       </div>
     </div>
 
-    <!-- VÄLITYSPALKKIO -->
     <div class="section">
       <div class="section-title">Välityspalkkio</div>
       <table class="fee-table">
@@ -423,68 +333,55 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Enintään 1 vuosi</td>
-            <td>1 kuukauden vuokra + alv 25,5&nbsp;%</td>
-          </tr>
-          <tr>
-            <td>Yli 1 vuosi, mutta alle 3 vuotta</td>
-            <td>1,5 kuukauden vuokra + alv 25,5&nbsp;%</td>
-          </tr>
-          <tr>
-            <td>3 vuotta tai pidempi, mutta alle 5 vuotta</td>
-            <td>2 kuukauden vuokra + alv 25,5&nbsp;%</td>
-          </tr>
-          <tr>
-            <td>5 vuotta tai pidempi</td>
-            <td>2,5 kuukauden vuokra + alv 25,5&nbsp;%</td>
-          </tr>
+          <tr><td>Enintään 1 vuosi</td><td>1 kk:n vuokra + alv 25,5&nbsp;%</td></tr>
+          <tr><td>Yli 1 vuosi, mutta alle 3 vuotta</td><td>1,5 kk:n vuokra + alv 25,5&nbsp;%</td></tr>
+          <tr><td>3 vuotta tai pidempi, mutta alle 5 vuotta</td><td>2 kk:n vuokra + alv 25,5&nbsp;%</td></tr>
+          <tr><td>5 vuotta tai pidempi</td><td>2,5 kk:n vuokra + alv 25,5&nbsp;%</td></tr>
         </tbody>
       </table>
-      <div class="fee-note">
-        Minimipalkkio 600 € + alv 25,5 %. Palkkion perusteena käytetään kokonaisvuokraa, johon sisältyy mm. mahdollinen hoitovuokra tai vastaava. Mahdollista investointivuokraa ei kuitenkaan lasketa mukaan palkkioon. Arvonlisäverokannan muuttuessa päivitetään arvonlisäverokanta voimassa olevan verokannan mukaiseksi.
-      </div>
-      <div class="fee-note" style="margin-top: 6px;">
-        Toimeksiannon johtaessa toimeksiannon kohteen myyntiin Best Estates Oy:n osoittamalle asiakkaalle, on Best Estates Oy:llä oikeus välityspalkkioon, joka on 3,5 % kohteen velattomasta hinnasta lisättynä arvonlisäverolla.
-      </div>
+      <div class="fee-note">Minimipalkkio 600 € + alv 25,5 %. Palkkion perusteena käytetään kokonaisvuokraa, johon sisältyy mm. mahdollinen hoitovuokra tai vastaava. Mahdollista investointivuokraa ei lasketa mukaan palkkioon. Arvonlisäverokannan muuttuessa päivitetään arvonlisäverokanta voimassa olevan verokannan mukaiseksi.</div>
+      <div class="fee-note" style="margin-top:6px;">Toimeksiannon johtaessa kohteen myyntiin Best Estates Oy:n osoittamalle asiakkaalle on Best Estates Oy:llä oikeus välityspalkkioon, joka on 3,5 % kohteen velattomasta hinnasta lisättynä arvonlisäverolla.</div>
     </div>
 
-    <!-- ALLEKIRJOITUKSET -->
     <div class="section">
       <div class="section-title">Allekirjoitukset</div>
-
-      <div class="date-place">
+      <div class="fields" style="margin-bottom:24px;">
         <div class="field">
-          <label>Paikka ja aika</label>
-          <div class="field-value"></div>
+          <label>Paikka</label>
+          <input type="text" placeholder="Kaupunki" />
+        </div>
+        <div class="field">
+          <label>Päivämäärä</label>
+          <input type="date" />
         </div>
       </div>
-
       <div class="sig-grid">
         <div class="sig-block">
           <div class="sig-label">Toimeksiantaja</div>
           <div class="sig-line"></div>
-          <div class="sig-name-line"></div>
-          <div class="sig-sublabel">Allekirjoitus ja nimenselvennys</div>
+          <input type="text" placeholder="Nimi ja titteli" style="margin-top:6px;" />
         </div>
         <div class="sig-block">
-          <div class="sig-label">Toimeksisaaja – Best Estates Oy</div>
+          <div class="sig-label">Toimeksisaaja — Best Estates Oy</div>
           <div class="sig-line"></div>
-          <div class="sig-name-line"></div>
-          <div class="sig-sublabel">Lasse Sorvari, toimitusjohtaja</div>
+          <input type="text" value="Lasse Sorvari, toimitusjohtaja" readonly style="margin-top:6px;" />
         </div>
       </div>
-
-      <div class="clause-text" style="margin-top: 20px; font-size: 12px; color: #555;">
+      <p class="clause-text" style="margin-top:20px; font-size:12px; color:#555;">
         Tätä sopimusta on laadittu kaksi yhtäpitävää kappaletta, yksi sopimuksen molemmille osapuolille.
-      </div>
+      </p>
     </div>
 
-  </div><!-- /body -->
+  </div>
+
+  <div class="print-bar">
+    <p>Täytä kentät → tulosta tai tallenna PDF</p>
+    <button class="btn-print" onclick="window.print()">🖨️ Tulosta / Tallenna PDF</button>
+  </div>
 
   <div class="legal-footer">
     Henkilötietojen käsittelyssä noudatetaan henkilötietolakia (523/1999) ja lakia kiinteistönvälitysliikkeistä ja vuokrahuoneiston välitysliikkeistä (1075/2000).<br>
-    Best Estates Oy · Y-tunnus 3219298-3 · lasse@bestestates.fi · 040 568 5900
+    Best Estates Oy &nbsp;·&nbsp; Y-tunnus 3219298-3 &nbsp;·&nbsp; lasse@bestestates.fi &nbsp;·&nbsp; 040 568 5900
   </div>
 
 </div>
